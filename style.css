@@ -12,9 +12,25 @@
     padding: 0;
 }
 
+html {
+    font-size: 93.75%; /* 15px */
+}
+
 body {
     background: #f0f2f5;
     font-family: 'Poppins', sans-serif;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding:0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
 }
 
 .container {
@@ -37,6 +53,20 @@ body {
     color: white;
 }
 
+/* Links and Buttons========== */
+a {
+    color: #49aa26;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #3dd705;
+}
+
+.button.new {
+    display: inline-block;
+    margin-bottom: 0.8rem;
+}
 
 /* Header ============================== */
 header {
@@ -54,13 +84,22 @@ header {
 .card {
     background: #fff;
     padding: 1.5rem 2rem;
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
     margin-bottom: 2rem;
 
     color: var(--darl-blue);
 }
 
+.card div {
+    width: min(300px);
+}
+
 .card h3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+
     font-weight: normal;
     font-size: 1rem;
 }
@@ -77,10 +116,17 @@ header {
 
 
 /* Table ============================== */
+#transactions {
+    display: block;
+    width: 100%;    
+    overflow-x: auto;
+}
+
 #data-table {
-    width: 100%;
+    width: 100%; 
     border-spacing: 0 0.5rem;
-    color: #969cb3;
+
+    color: #969cb3; 
 }
 
 table th {
@@ -91,8 +137,8 @@ table th {
     text-align: left;
 }
 
-table thead tr {
-    border-radius: 0.25rem 0.25rem 0 0; /* arrumar*/
+table thead tr th:first-child {
+    border-radius: 0.25rem 0 0 0.25; /* arrumar*/
 }
 
 table tr {
@@ -121,6 +167,35 @@ td.income {
     color: #e92929;
 }
 
+/* Modal ============================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0,0,0,0.7);
+
+    /* opacity: 0;
+    visibility: hidden; */
+}
+
+.modal-overlay.active {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal {    
+    background: #f0f2f5;
+
+    padding: 2.4rem;
+}
+
 
 /* Footer ============================== */
 footer {
@@ -129,4 +204,18 @@ footer {
     opacity: 0.6;
 
     padding: 4rem 0 2rem;
+}
+
+
+/* Responsive ========================== */
+@media (min-width: 800px) {
+    html {
+        font-size: 87.5%;
+    }
+
+    #balance {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 2rem;
+    }
 }
